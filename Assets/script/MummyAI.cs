@@ -13,6 +13,7 @@ public class MummyAI : MonoBehaviour
     public AudioSource hurtSound2;
     public AudioSource hurtSound3;
     public int hurtGen;
+    public GameObject theFlash;
 
     void Update()
     {
@@ -46,9 +47,6 @@ public class MummyAI : MonoBehaviour
     IEnumerator InflictDamage()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(1.1f);
-        GlobalHealth.currentHealth -= 5;
-        hurtGen = Random.Range(1, 4);
         if (hurtGen == 1)
         {
             hurtSound1.Play();
@@ -61,7 +59,14 @@ public class MummyAI : MonoBehaviour
         {
             hurtSound3.Play();
         }
-        yield return new WaitForSeconds(0.2f);
+        theFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        theFlash.SetActive(false);  
+        yield return new WaitForSeconds(1.1f);
+        GlobalHealth.currentHealth -= 5;
+        hurtGen = Random.Range(1, 4);
+        
+        yield return new WaitForSeconds(0.9f);
         isAttacking = false;
     }
 

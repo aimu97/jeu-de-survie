@@ -21,6 +21,8 @@ public class MummyDeath : MonoBehaviour
     {
         if (EnemyHealth <= 0 && StatusCheck == 0)
         {
+            this.GetComponent<MummyAI>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             StatusCheck = 2;
             TheEnemy.GetComponent<Animation>().Stop("walk");
             TheEnemy.GetComponent<Animation>().Play("fall");
