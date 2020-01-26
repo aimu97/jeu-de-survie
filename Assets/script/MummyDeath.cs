@@ -8,6 +8,7 @@ public class MummyDeath : MonoBehaviour
     public GameObject TheEnemy;
     public int StatusCheck;
     public AudioSource JumpscareMusic;
+    public AudioSource AmMusic;
 
     void DamageMummy(int DamageAmount)
     {
@@ -27,6 +28,7 @@ public class MummyDeath : MonoBehaviour
             TheEnemy.GetComponent<Animation>().Stop("walk");
             TheEnemy.GetComponent<Animation>().Play("fall");
             JumpscareMusic.Stop();
+            AmMusic.Play();
         }
     }
 }

@@ -9,6 +9,7 @@ public class MonsterJumpTrigger : MonoBehaviour
     public AudioSource DoorJumpMusic;
     public GameObject TheMonster;
     public GameObject TheDoor;
+    public AudioSource AmMusic;
 
 
     void OnTriggerEnter()
@@ -23,6 +24,7 @@ public class MonsterJumpTrigger : MonoBehaviour
     IEnumerator PlayJumpMusic()
     {
         yield return new WaitForSeconds(0.4f);
+        AmMusic.Stop();
         DoorJumpMusic.Play();
     }
 
